@@ -25,7 +25,7 @@
         function login() {
 
             // ### Setup cookie
-            var url = 'backoffice/memberlogin/memberlogin/dologin';
+            var url = 'backoffice/memberlogin/memberloginapi/dologin';
 
             // Get the current member id using the editorState
             var _memberId = editorState.current.id;

@@ -24,10 +24,10 @@ namespace MemberLogin.Controllers
         /// Do Login
         /// </summary>
         [HttpPost]
-        public void DoLogin([FromBody]Guid member)
+        public void DoLogin([FromBody]int member)
         {
-            // Get the member using the Guid
-            var _member = Services.MemberService.GetByKey(member);
+            // Get the member using the id
+            var _member = Services.MemberService.GetById(member);
 
             // Only do the login when we have a member
             if (_member != null)
