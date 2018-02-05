@@ -1,0 +1,25 @@
+﻿{
+	"propertyEditors": [
+		{
+			alias: "memberLogin",
+			name: "Member Login",
+			editor: {
+				view: "~/App_Plugins/MemberLogin/views/memberlogin.editor.html",
+				hideLabel: true
+			},
+			prevalues: {
+				fields: [
+					{
+						label: "Redirect Page",
+						description: "After impersonating the member, go to this page ( can be a public or private page ).",
+						key: "memberRedirectPage",
+						view: "treepicker"
+					}
+				]
+			}
+		}
+	],
+	"javascript": [
+		"~/App_Plugins/MemberLogin/js/memberlogin.controller.js"
+	]
+}

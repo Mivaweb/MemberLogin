@@ -288,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -297,6 +298,7 @@
     <Content Include="Web\UI\App_Plugins\MemberLogin\package.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="gruntfile.js" />
     <Content Include="Web.config" />
     <Content Include="Web\UI\App_Plugins\MemberLogin\js\memberlogin.controller.js" />
     <Content Include="Web\UI\App_Plugins\MemberLogin\views\memberlogin.editor.html" />
