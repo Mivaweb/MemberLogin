@@ -242,3 +242,6 @@ ModelManifest.xml
 .fake/
 /src/MemberLogin.Site/App_Data/NuGetBackup/20180205-215211
 /src/MemberLogin.Site/Media
+/src/MemberLogin.Site/App_Data/TEMP
+/src/MemberLogin.Site/App_Data/Logs
+/src/MemberLogin.Site/App_Data/ClientDependency
