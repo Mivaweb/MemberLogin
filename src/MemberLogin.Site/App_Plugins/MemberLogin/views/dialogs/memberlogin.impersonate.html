@@ -1,4 +1,4 @@
-﻿<div ng-controller="Mivaweb.Navigation.MemberLoginController as vm" class="umb-dialog umb-pane">
+﻿<div ng-controller="Mivaweb.Navigation.MemberLoginController as vm" ng-init="vm.openOverlay()" class="umb-dialog umb-pane">
 
     <div class="umb-dialog-body">
         
@@ -9,7 +9,7 @@
         <div class="umb-pane btn-toolbar umb-btn-toolbar">
             <div class="control-group umb-control-group">
                 <a href ng-click="vm.close()" class="btn btn-link">Cancel</a>
-                <a href ng-click="vm.doLogin()" class="btn btn-primary">Impersonate</a>
+                <a href ng-click="vm.doLogin()" class="btn btn-primary">Impersonate as {{vm.memberName}}</a>
             </div>
         </div>
 
