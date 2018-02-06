@@ -27,4 +27,4 @@ Initial release of the MemberLogin package.
 
 Copyright © 2018 Michaël Vanbrabandt
 
-Licensed under the [Apache 2.0 License](LICENSE.md)
+Licensed under the [MIT License](LICENSE.md)
