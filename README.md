@@ -4,6 +4,13 @@
 
 MemberLogin is a Umbraco backoffice extension package which allows you to impersonate as a Member into the front-end website.
 
+v1.0.0 
+
+First you need to create a new datatype of type MemberLogin in your developer section of Umbraco.
+After that, you add a new property into your member document type, using this new datatype.
+
+As you will see, this is only a button for doing the login as a Member.
+
 ## Contributors
 
 * [Michaël Vanbrabandt](https://github.com/mivaweb)
