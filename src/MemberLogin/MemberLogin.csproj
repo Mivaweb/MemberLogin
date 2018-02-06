@@ -304,6 +304,7 @@
     <Content Include="Web\UI\App_Plugins\MemberLogin\views\memberlogin.editor.html" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\MemberLoginApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
