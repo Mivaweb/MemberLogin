@@ -301,6 +301,7 @@
     <Content Include="gruntfile.js" />
     <Content Include="Web.config" />
     <Content Include="Web\UI\App_Plugins\MemberLogin\js\memberlogin.controller.js" />
+    <Content Include="Web\UI\App_Plugins\MemberLogin\views\dialogs\memberlogin.impersonate.html" />
     <Content Include="Web\UI\App_Plugins\MemberLogin\views\memberlogin.editor.html" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,18 @@
+﻿<div ng-controller="Mivaweb.Navigation.MemberLoginController as vm" class="umb-dialog umb-pane">
+
+    <div class="umb-dialog-body">
+        
+        <p class="umb-abstract">You are about the impersonate as member <strong>{{vm.memberName}}</strong>.</p>
+
+        <p>You will be redirected to to the root page: <strong>/</strong></p>
+
+        <div class="umb-pane btn-toolbar umb-btn-toolbar">
+            <div class="control-group umb-control-group">
+                <a href ng-click="vm.close()" class="btn btn-link">Cancel</a>
+                <a href ng-click="vm.doLogin()" class="btn btn-primary">Impersonate</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

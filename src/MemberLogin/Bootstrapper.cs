@@ -24,6 +24,8 @@ namespace MemberLogin
 
             var menuItem = new Umbraco.Web.Models.Trees.MenuItem("memberLogin", "Impersonate Member");
             menuItem.Icon = "client";
+            menuItem.AdditionalData.Add("memberId", e.NodeId);
+            menuItem.AdditionalData.Add("actionView", "/App_Plugins/MemberLogin/views/dialogs/memberlogin.impersonate.html");
             menuItem.SeperatorBefore = false;
 
             e.Menu.Items.Insert(e.Menu.Items.Count, menuItem);
