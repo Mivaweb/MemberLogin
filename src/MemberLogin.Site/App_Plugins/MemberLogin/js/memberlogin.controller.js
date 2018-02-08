@@ -2,28 +2,93 @@
 
     'use strict';
 
-
-
-    function memberLoginNavController(
-        $scope,
-        $http,
-        editorState,
-        navigationService) {
+    function memberLoginController(
+            $scope,
+            $http,
+            editorState,
+            dialogService,
+            navigationService,
+            contentResource
+        ) {
 
         var vm = this;
 
-        // Set the member name
-        vm.memberName = editorState.current.name;
+        vm.member = editorState.current.name;
+        vm.dialogOpen = false;
+        vm.node = null;
+        vm.contentId = 0;
 
-        vm.doLogin = login;
         vm.close = close;
-
-
-        //////////////////////////////////
+        vm.openDialog = openDialog;
+        vm.reset = reset;
+        vm.login = login;
 
         // ## Close navigation
         function close() {
+            dialogService.closeAll();
             navigationService.hideNavigation();
+        }
+
+        // ## Reset
+        function reset() {
+            setContent();
+        }
+
+        // ## Open contentPicker dialog
+        function openDialog() {
+
+            vm.dialogOpen = true;
+
+            vm.contentPickerOverlay = {
+                view: 'contentPicker',
+                title: 'Select content',
+                multiPicker: false,
+                show: true,
+                hideSubmitButton: true,
+                close: function () {
+
+                    vm.dialogOpen = false;
+
+                    vm.contentPickerOverlay.show = false;
+                    vm.contentPickerOverlay = null;
+
+                },
+                submit: function (model) {
+
+                    // Get the first selected content node
+                    var data = model.selection[0];
+
+                    setContent(data);
+
+                    vm.dialogOpen = false;
+
+                    vm.contentPickerOverlay.show = false;
+                    vm.contentPickerOverlay = null;
+
+                }
+            }
+        }
+
+        // ## Set Content in UI
+        function setContent(node) {
+
+            // Make sure we have an object for the node property
+            if (!vm.node) vm.node = {};
+
+            // Reset
+            if (!node) {
+                vm.contentId = 0;
+                vm.node = null;
+                return;
+            }
+
+            // Set the content Id
+            vm.contentId = node.id;
+
+            // Update the UI
+            vm.node = node;
+            vm.node.published = node.metaData.IsPublished;
+            vm.node.status = !vm.node.published ? 'This item is not published' : '';
         }
 
         // ## Login as the selected member
@@ -42,8 +107,15 @@
                 function (response) {
 
                     // ### Redirect
-                    // Open the root page
-                    window.open('/', '_blank');
+                    // Check if page is set in the config
+                    if (vm.contentId) {
+                        contentResource.getNiceUrl(vm.contentId).then(function (data) {
+                            window.open(data, '_blank')
+                        });
+                    } else {
+                        // Open the root page
+                        window.open('/', '_blank');
+                    }
 
                     // Close navigation
                     navigationService.hideNavigation();
@@ -52,87 +124,18 @@
                 function (error) { }
             );
         }
+
     }
 
     /*
      * @ngdoc Controller
-     * @name Mivaweb.Navigation.MemberLoginController
+     * @name Mivaweb.MemberLoginController
      * 
      * @description
-     * Contains the logic of the Navigation MemberLogin
+     * Contains the logic of the MemberLogin
      * 
      */
     angular.module('umbraco')
-        .controller('Mivaweb.Navigation.MemberLoginController', memberLoginNavController);
-
-
-
-    // ############################
-
-
-
-    function memberLoginController(
-        $scope,
-        $http,
-        editorState,
-        navigationService,
-        contentResource) {
-
-        var vm = this;
-
-        // Check if you are creating a new member
-        vm.isNew = editorState.current.id <= 0;
-
-        // Define the login as member function
-        vm.doLogin = login;
- 
-
-        //////////////////////////////////
-
-
-        function login() {
-
-            // ### Setup cookie
-            var url = 'backoffice/memberlogin/memberloginapi/dologin';
-
-            // Get the current member id using the editorState
-            var _memberId = editorState.current.id;
-
-            // Do Login
-            $http.post(
-                url,
-                _memberId).then(
-                function (response) {
-
-                    // ### Redirect
-                    // Get the redirect page from config
-                    var urlPageRedirect = $scope.model.config.memberRedirectPage;
-
-                    // Check if page is set in the config
-                    if (urlPageRedirect) {
-                        contentResource.getNiceUrl(urlPageRedirect).then(function (data) {
-                            window.open(data, '_blank') // Get the first url
-                        });
-                    } else {
-                        // Open the root page
-                        window.open('/', '_blank');
-                    }
-
-                },
-                function (error) { }
-            );
-        }
-    }
-
-    /*
-     * @ngdoc Controller
-     * @name Mivaweb.PropertyEditor.MemberLoginController
-     * 
-     * @description
-     * Contains the logic of the PropertyEditor MemberLogin
-     * 
-     */
-    angular.module('umbraco')
-        .controller('Mivaweb.PropertyEditor.MemberLoginController', memberLoginController);
+        .controller('Mivaweb.MemberLoginController', memberLoginController);
 
 })();

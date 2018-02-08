@@ -1,10 +1,15 @@
-﻿<div ng-controller="Mivaweb.Navigation.MemberLoginController as vm" ng-init="vm.openOverlay()" class="umb-dialog umb-pane">
+﻿<div ng-controller="Mivaweb.Navigation.MemberLoginController as vm" ng-init="vm.openOverlay()" 
+     class="umb-dialog umb-pane" ng-class="{'umb-disabled': vm.dialogOpen}">
 
     <div class="umb-dialog-body">
         
         <p class="umb-abstract">You are about the impersonate as member <strong>{{vm.memberName}}</strong>.</p>
 
-        <p>You will be redirected to to the root page: <strong>/</strong></p>
+        <p>Redirect to the following page after login:</p>
+
+        <br />
+
+        <member-login config="model.config" value="model.value" />
 
         <div class="umb-pane btn-toolbar umb-btn-toolbar">
             <div class="control-group umb-control-group">
