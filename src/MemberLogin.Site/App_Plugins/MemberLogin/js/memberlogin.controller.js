@@ -6,7 +6,6 @@
             $scope,
             $http,
             editorState,
-            dialogService,
             navigationService,
             contentResource
         ) {
@@ -14,18 +13,48 @@
         var vm = this;
 
         vm.member = editorState.current.name;
-        vm.dialogOpen = false;
         vm.node = null;
         vm.contentId = 0;
 
+        vm.init = init;
         vm.close = close;
-        vm.openDialog = openDialog;
         vm.reset = reset;
         vm.login = login;
 
+
+
+        // ##########################"
+
+
+
+        // ## Init dialog
+        function init() {
+
+            // Set the modal to be passed through the contentPicker
+            $scope.model = {
+                view: 'contentPicker',
+                title: 'Select content',
+                multiPicker: false,
+                show: true,
+                hideSubmitButton: true,
+                submit: function (model) {
+
+                    // Get the first selected content node
+                    var data = model.selection[0];
+
+                    setContent(data);
+
+                }
+            }
+
+            // Set view
+            vm.view = $scope.model.view;
+
+            setView();
+        }
+
         // ## Close navigation
         function close() {
-            dialogService.closeAll();
             navigationService.hideNavigation();
         }
 
@@ -34,39 +63,18 @@
             setContent();
         }
 
-        // ## Open contentPicker dialog
-        function openDialog() {
+        // ## Set view
+        function setView() {
 
-            vm.dialogOpen = true;
-
-            vm.contentPickerOverlay = {
-                view: 'contentPicker',
-                title: 'Select content',
-                multiPicker: false,
-                show: true,
-                hideSubmitButton: true,
-                close: function () {
-
-                    vm.dialogOpen = false;
-
-                    vm.contentPickerOverlay.show = false;
-                    vm.contentPickerOverlay = null;
-
-                },
-                submit: function (model) {
-
-                    // Get the first selected content node
-                    var data = model.selection[0];
-
-                    setContent(data);
-
-                    vm.dialogOpen = false;
-
-                    vm.contentPickerOverlay.show = false;
-                    vm.contentPickerOverlay = null;
-
+            if (vm.view) {
+                
+                if (vm.view.indexOf(".html") === -1) {
+                    var viewAlias = vm.view.toLowerCase();
+                    vm.view = "views/common/overlays/" + viewAlias + "/" + viewAlias + ".html";
                 }
+
             }
+
         }
 
         // ## Set Content in UI
