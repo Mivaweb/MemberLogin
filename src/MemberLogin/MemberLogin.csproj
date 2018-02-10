@@ -296,7 +296,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Web\UI\App_Plugins\MemberLogin\css\memberlogin.css" />
-    <Content Include="Web\UI\App_Plugins\MemberLogin\js\memberlogin.directive.js" />
     <Content Include="Web\UI\App_Plugins\MemberLogin\package.manifest" />
   </ItemGroup>
   <ItemGroup>
@@ -304,7 +303,6 @@
     <Content Include="Web.config" />
     <Content Include="Web\UI\App_Plugins\MemberLogin\js\memberlogin.controller.js" />
     <Content Include="Web\UI\App_Plugins\MemberLogin\views\memberlogin.html" />
-    <Content Include="Web\UI\App_Plugins\MemberLogin\views\memberlogin.directive.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
