@@ -80,9 +80,6 @@
         // ## Set Content in UI
         function setContent(node) {
 
-            // Make sure we have an object for the node property
-            if (!vm.node) vm.node = {};
-
             // Reset
             if (!node) {
                 vm.contentId = 0;
@@ -90,13 +87,18 @@
                 return;
             }
 
-            // Set the content Id
+            // Set the ContentId
             vm.contentId = node.id;
 
-            // Update the UI
-            vm.node = node;
-            vm.node.published = node.metaData.IsPublished;
-            vm.node.status = !vm.node.published ? 'This item is not published' : '';
+            // Get node data
+            contentResource.getById(vm.contentId).then(function (data) {
+
+                // Update the UI
+                vm.node = data;
+                vm.node.status = !vm.node.published ? 'This item is not published' : '';
+
+            });
+
         }
 
         // ## Login as the selected member
