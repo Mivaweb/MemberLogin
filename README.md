@@ -15,10 +15,6 @@ As you will see, this is only a button for doing the login as a Member.
 
 ### History Version
 
-#### v1.1.0
-
-Ditched the Property Editor and moved to using a custom Action menu item on the Member tree.
-
 #### v1.0.0
 
 Initial release of the MemberLogin package.
