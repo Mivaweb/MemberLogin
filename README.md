@@ -18,6 +18,7 @@ As you will see, this is only a button for doing the login as a Member.
 #### v1.1.0
 
 Ditched the Property Editor and moved to using a custom Action menu item on the Member tree.
+
 *This version uses the directive umb-preview-node which was introduced in version 7.6!
 
 #### v1.0.0
