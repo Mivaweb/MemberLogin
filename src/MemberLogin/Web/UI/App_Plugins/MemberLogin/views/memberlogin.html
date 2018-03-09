@@ -1,0 +1,39 @@
+﻿<div ng-controller="Mivaweb.MemberLoginController as vm"
+     class="memberlogin umb-dialog umb-pane" ng-init="vm.init()">
+
+    <div class="umb-dialog-body">
+
+        <p class="umb-abstract">You are about to impersonate as member <strong>{{vm.member}}</strong>.</p>
+
+        <p>Redirect to the following page after login:</p>
+
+        <div class="memberlogin-container">
+            <div ng-if="vm.node">
+                <umb-node-preview icon="vm.node.icon"
+                                  name="vm.node.name"
+                                  published="vm.node.published"
+                                  description="vm.node.status"
+                                  sortable="false"
+                                  allow-remove="true"
+                                  allow-open="false"
+                                  on-remove="vm.reset()"></umb-node-preview>
+            </div>
+
+            <div ng-if="!vm.node" class="memberlogin_node-add">
+                <div class="form-horizontal">
+                    <div ng-if="vm.view" ng-include="vm.view"></div>
+                </div>
+                <p>*You will be redirect to the root page '/' of the website.</p>
+            </div>
+        </div>
+
+        <div class="umb-pane btn-toolbar umb-btn-toolbar">
+            <div class="control-group umb-control-group">
+                <a href="#" prevent-default="" ng-click="vm.close()" class="btn btn-link"><localize key="general_cancel" class="ng-isolate-scope ng-scope">Cancel</localize></a>
+                <a href="#" prevent-default="" ng-show="!vm.node || vm.node.published" ng-click="vm.login()" class="btn btn-primary">Impersonate as {{vm.member}}</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

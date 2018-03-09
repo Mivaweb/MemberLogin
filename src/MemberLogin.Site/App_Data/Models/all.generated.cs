@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "4b18acf8f2dc08c1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "39f003d21109da68")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -63,6 +63,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Home, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Redirect
+		///</summary>
+		[ImplementPropertyType("redirect")]
+		public IPublishedContent Redirect
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("redirect"); }
 		}
 	}
 
@@ -300,15 +309,6 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Member, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// MemberLogin
-		///</summary>
-		[ImplementPropertyType("memberLogin")]
-		public object MemberLogin
-		{
-			get { return this.GetPropertyValue("memberLogin"); }
 		}
 
 		///<summary>

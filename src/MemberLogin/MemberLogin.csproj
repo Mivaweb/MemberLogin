@@ -295,15 +295,17 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Web\UI\App_Plugins\MemberLogin\css\memberlogin.css" />
     <Content Include="Web\UI\App_Plugins\MemberLogin\package.manifest" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="gruntfile.js" />
     <Content Include="Web.config" />
     <Content Include="Web\UI\App_Plugins\MemberLogin\js\memberlogin.controller.js" />
-    <Content Include="Web\UI\App_Plugins\MemberLogin\views\memberlogin.editor.html" />
+    <Content Include="Web\UI\App_Plugins\MemberLogin\views\memberlogin.html" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\MemberLoginApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
