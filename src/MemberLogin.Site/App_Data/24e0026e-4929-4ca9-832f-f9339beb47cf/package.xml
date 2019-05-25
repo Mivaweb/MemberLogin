@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <info>
+    <package>
+      <name>Fluidity</name>
+      <version>1.0.1</version>
+      <license url="https://opensource.org/licenses/Apache-2.0">Apache 2.0 license</license>
+      <url>https://github.com/umco/umbraco-fluidity</url>
+      <requirements>
+        <major>7</major>
+        <minor>1</minor>
+        <patch>4</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Matt Brailsford and contributors</name>
+      <website>https://github.com/umco/umbraco-fluidity</website>
+    </author>
+    <readme><![CDATA[A fluent CRUD user interface generator for Umbraco]]></readme>
+  </info>
+  
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions />
+  
+  <control />
+  
+  <files><file><guid>b0ecfae9-1b4d-4b9c-839f-7c06c24ad838.js</guid><orgPath>/App_Plugins/Fluidity/backoffice/fluidity</orgPath><orgName>delete.controller.js</orgName></file><file><guid>a984864f-0984-4cb5-bf93-6a70a925917a.html</guid><orgPath>/App_Plugins/Fluidity/backoffice/fluidity</orgPath><orgName>delete.html</orgName></file><file><guid>eb642ba0-041c-430b-afa3-3a38339a8ac8.js</guid><orgPath>/App_Plugins/Fluidity/backoffice/fluidity</orgPath><orgName>edit.controller.js</orgName></file><file><guid>ccd072f9-ca72-4b8c-98d8-8f2321300ed4.html</guid><orgPath>/App_Plugins/Fluidity/backoffice/fluidity</orgPath><orgName>edit.html</orgName></file><file><guid>5af77477-8e7f-4c29-9d96-f45839a3f5aa.js</guid><orgPath>/App_Plugins/Fluidity/backoffice/fluidity</orgPath><orgName>list.controller.js</orgName></file><file><guid>5fbbb225-991a-4986-99b0-497a11b4175f.html</guid><orgPath>/App_Plugins/Fluidity/backoffice/fluidity</orgPath><orgName>list.html</orgName></file><file><guid>0a98e089-667e-4b39-a6ce-580e6ea5f17b.css</guid><orgPath>/App_Plugins/Fluidity/css</orgPath><orgName>fluidity.css</orgName></file><file><guid>b6c79571-64d1-45d4-b981-eddf09fd6174.js</guid><orgPath>/App_Plugins/Fluidity/dashboards</orgPath><orgName>dashboard.controller.js</orgName></file><file><guid>8b08c949-6e01-49d0-83d4-5988e023e4b5.html</guid><orgPath>/App_Plugins/Fluidity/dashboards</orgPath><orgName>dashboard.html</orgName></file><file><guid>e404b9f8-b02f-46aa-bdfb-7f573d859799.js</guid><orgPath>/App_Plugins/Fluidity/dialogs</orgPath><orgName>entitypicker.controller.js</orgName></file><file><guid>fdee0b4f-3e4c-48c3-88d5-0aa5eca1f755.html</guid><orgPath>/App_Plugins/Fluidity/dialogs</orgPath><orgName>entitypicker.html</orgName></file><file><guid>e38755c5-0458-4509-b17d-c0fb173f5c05.js</guid><orgPath>/App_Plugins/Fluidity/directives</orgPath><orgName>listview.directive.js</orgName></file><file><guid>d66ac2e3-3950-4cd4-80fb-73ad80bc7305.html</guid><orgPath>/App_Plugins/Fluidity/directives</orgPath><orgName>listview.html</orgName></file><file><guid>523b7cda-c694-402d-a28e-38d67f2b1508.js</guid><orgPath>/App_Plugins/Fluidity/directives</orgPath><orgName>minilistview.directive.js</orgName></file><file><guid>fc6e1e4c-5d6d-4685-ac22-ecd35f0b9e0b.html</guid><orgPath>/App_Plugins/Fluidity/directives</orgPath><orgName>minilistview.html</orgName></file><file><guid>5919cdd2-8812-4bb2-aad0-d5dd8363db6e.js</guid><orgPath>/App_Plugins/Fluidity/overrides</orgPath><orgName>fluidity.overrides.js</orgName></file><file><guid>2c491c10-0883-4b0d-83b0-ad05f62feb07.manifest</guid><orgPath>/App_Plugins/Fluidity</orgPath><orgName>package.manifest</orgName></file><file><guid>b014463b-6636-40eb-94a1-7fc853dd72ad.js</guid><orgPath>/App_Plugins/Fluidity/prevalues</orgPath><orgName>collectionpicker.controller.js</orgName></file><file><guid>88cb0e0a-24da-403f-9434-73f0d47af2cd.html</guid><orgPath>/App_Plugins/Fluidity/prevalues</orgPath><orgName>collectionpicker.html</orgName></file><file><guid>c199c689-4d4d-4d88-9173-c1dc55fbd774.js</guid><orgPath>/App_Plugins/Fluidity/propertyeditors</orgPath><orgName>entitypicker.controller.js</orgName></file><file><guid>aa7fefe1-fed4-413d-9546-44e1f191126b.html</guid><orgPath>/App_Plugins/Fluidity/propertyeditors</orgPath><orgName>entitypicker.html</orgName></file><file><guid>b34dc5bf-833a-46a9-8f7b-4782810e2711.js</guid><orgPath>/App_Plugins/Fluidity/resources</orgPath><orgName>fluidity.resource.js</orgName></file><file><guid>23a0de71-1e57-4e20-b82a-6d0e0614344c.js</guid><orgPath>/App_Plugins/Fluidity/services</orgPath><orgName>fluidity.bulkactions.service.js</orgName></file><file><guid>cc3e9cc7-0f89-4ef7-939e-3f5ed7246843.js</guid><orgPath>/App_Plugins/Fluidity/services</orgPath><orgName>fluidity.utility.service.js</orgName></file><file><guid>4eeee7fc-6e7a-4748-a164-af88f3d1bf5a.dll</guid><orgPath>/bin</orgPath><orgName>Fluidity.dll</orgName></file></files>
+  
+</umbPackage>

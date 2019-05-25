@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>package.manifest</guid>
+      <orgPath>/App_Plugins/MemberLogin</orgPath>
+      <orgName>package.manifest</orgName>
+    </file>
+    <file>
+      <guid>memberlogin.controller.js</guid>
+      <orgPath>/App_Plugins/MemberLogin/js</orgPath>
+      <orgName>memberlogin.controller.js</orgName>
+    </file>
+    <file>
+      <guid>memberlogin.editor.html</guid>
+      <orgPath>/App_Plugins/MemberLogin/views</orgPath>
+      <orgName>memberlogin.editor.html</orgName>
+    </file>
+    <file>
+      <guid>MemberLogin.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>MemberLogin.dll</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>MemberLogin</name>
+      <version>v1.0.0</version>
+      <iconUrl />
+      <license url="http://opensource.org/licenses/MIT">MIT License</license>
+      <url>https://github.com/Mivaweb/MemberLogin</url>
+      <requirements type="strict">
+        <major>7</major>
+        <minor>4</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Mivaweb</name>
+      <website>https://www.mivaweb.be</website>
+    </author>
+    <readme><![CDATA[MemberLogin is a Umbraco backoffice extension package which allows you to impersonate as a Member into the front-end website.
+
+First you need to create a new datatype of type MemberLogin in your developer section of Umbraco. After that, you add a new property into your member document type, using this new datatype.
+
+As you will see, this is only a button for doing the login as a Member.]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+</umbPackage>
