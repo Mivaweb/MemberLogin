@@ -258,6 +258,7 @@
     <Content Include="Web\UI\App_Plugins\MemberLogin\views\memberlogin.html" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MemberLoginApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup\MemberLoginComponent.cs" />
     <Compile Include="Startup\MemberLoginComposer.cs" />
@@ -273,10 +274,7 @@
     </None>
     <Content Include="Web\UI\App_Plugins\MemberLogin\package.manifest" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

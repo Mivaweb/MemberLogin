@@ -5,32 +5,34 @@
 
         <p class="umb-abstract">You are about to impersonate as member <strong>{{vm.member}}</strong>.</p>
 
-        <p>Redirect to the following page after login:</p>
-
         <div class="memberlogin-container">
-            <div ng-if="vm.node">
-                <umb-node-preview icon="vm.node.icon"
-                                  name="vm.node.name"
-                                  published="vm.node.published"
-                                  description="vm.node.status"
-                                  sortable="false"
-                                  allow-remove="true"
-                                  allow-open="false"
-                                  on-remove="vm.reset()"></umb-node-preview>
-            </div>
 
-            <div ng-if="!vm.node" class="memberlogin_node-add">
-                <div class="form-horizontal">
-                    <div ng-if="vm.view" ng-include="vm.view"></div>
+            <div class="control-group umb-control-group -no-border">
+                <div class="umb-el-wrap">
+                    <label>
+                        <strong>Redirect Page</strong>
+                        <small>Choose to which page you want to redirect after login.</small>
+                    </label>
+                    <div ng-show="!vm.node" class="memberlogin_node-add">
+                        <a href ng-click="vm.pickRedirectPage()" class="umb-node-preview-add" prevent-default>
+                            <localize key="general_add" class="ng-isolate-scope">Add</localize>
+                        </a>
+                        <p>*You will be redirect to the root page '/' of the website.</p>
+                    </div>
+                    <umb-node-preview ng-show="vm.node"
+                                      icon="vm.node.icon"
+                                      name="vm.node.name"
+                                      allow-remove="true"
+                                      on-remove="vm.node = null">
+                    </umb-node-preview>
                 </div>
-                <p>*You will be redirect to the root page '/' of the website.</p>
             </div>
         </div>
 
         <div class="umb-pane btn-toolbar umb-btn-toolbar">
             <div class="control-group umb-control-group">
                 <a href="#" prevent-default="" ng-click="vm.close()" class="btn btn-link"><localize key="general_cancel" class="ng-isolate-scope ng-scope">Cancel</localize></a>
-                <a href="#" prevent-default="" ng-show="!vm.node || vm.node.published" ng-click="vm.login()" class="btn btn-primary">Impersonate as {{vm.member}}</a>
+                <a href="#" prevent-default="" ng-click="vm.login()" class="btn btn-primary">Impersonate as {{vm.member}}</a>
             </div>
         </div>
 
