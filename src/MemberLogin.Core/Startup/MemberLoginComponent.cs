@@ -30,7 +30,7 @@ namespace MemberLogin.Core.Startup
 
         public void Terminate()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
