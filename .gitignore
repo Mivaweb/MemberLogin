@@ -268,3 +268,4 @@ ModelManifest.xml
 
 # Ignore the Models Builder models out of date flag
 **/App_Data/Models/ood.flag
+src/MemberLogin.SiteV8/Media/created-packages/
