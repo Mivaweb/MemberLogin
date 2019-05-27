@@ -20,12 +20,16 @@
         vm.languages = [];
         vm.selectedLanguage = {};
         vm.languageSelectorIsOpen = false;
+        vm.loaded = false;
 
         vm.init = init;
         vm.close = close;
         vm.login = login;
         vm.pickRedirectPage = pickRedirectPage;
         vm.toggleLanguageSelector = toggleLanguageSelector;
+        vm.selectLanguage = selectLanguage;
+
+        var currNode = null;
 
 
 
@@ -33,32 +37,48 @@
 
 
 
+        // ## Init dialog
+        function init() {
+            // load languages
+            loadLanguages().then(function (languages) {
+                vm.languages = languages;
+
+                if (vm.languages.length > 0) {
+                    var currCulture = null;
+                    var mainCulture = $location.search().mculture;
+                    if (mainCulture) {
+                        currCulture = _.find(vm.languages, function (l) {
+                            return l.culture.toLowerCase() === mainCulture.toLowerCase();
+                        });
+                    }
+                    vm.selectedLanguage = currCulture;
+                }
+
+                vm.loaded = true;
+            });
+        }
+
+        // ## This loads the language data, if the are no variant content types configured this will return no languages
+        function loadLanguages() {
+            return contentResource.allowsCultureVariation().then(function (b) {
+                if (b === true) {
+                    return languageResource.getAll();
+                }
+            });
+        }
+
         // ## Toggle language selector
         function toggleLanguageSelector() {
             vm.languageSelectorIsOpen = !vm.languageSelectorIsOpen;
         };
 
-
-        // Open editorService contentpicker
+        // ## Open editorService contentpicker
         function pickRedirectPage() {
             navigationService.allowHideDialog(false);
             editorService.contentPicker({
                 submit: function (model) {
                     // Get the first selected content node
-                    vm.node = model.selection[0];
-
-                    console.log(vm.node);
-
-                    // Get node data
-                    contentResource.getById(vm.node.id).then(function (data) {
-
-                        console.log(data);
-
-                        // Update the UI
-                        //vm.node = data;
-                        //vm.node.status = !vm.node.published ? 'This item is not published' : '';
-
-                    });
+                    setContent(model.selection[0]);
 
                     editorService.close();
                     navigationService.allowHideDialog(true);
@@ -70,32 +90,68 @@
             });
         }
 
-        // ## Init dialog
-        function init() {
-            // load languages
-            loadLanguages().then(function (languages) {
-                vm.languages = languages;
+        // ## Set Content
+        function setContent(data) {
+            var node = data;
 
-                if (vm.languages.length > 1) {
-                    var currCulture = null;
-                    var mainCulture = $location.search().mculture;
-                    if (mainCulture) {
-                        currCulture = _.find(vm.languages, function (l) {
-                            return l.culture.toLowerCase() === mainCulture.toLowerCase();
-                        });
-                    }
-                    vm.selectedLanguage = currCulture;
-                }
+            // Get node data
+            contentResource.getById(data.id).then(function (data) {
+                currNode = data;
+
+                // Get the variant and url based on the selected language culture
+                getVariant(node);
+                getUrl(node);
+
+                vm.node = node;
             });
         }
 
-        // ## This loads the language data, if the are no variant content types configured this will return no languages
-        function loadLanguages() {
-            return contentResource.allowsCultureVariation().then(function (b) {
-                if (b === true) {
-                    return languageResource.getAll();
+        // ## Get content node variant based on culture
+        function getVariant(node) {
+            if (currNode.variants.length > 0) {
+                var currVariant = null;
+                if (vm.selectedLanguage) {
+                    currVariant = _.find(currNode.variants, function (v) {
+                        return v.language.id == vm.selectedLanguage.id;
+                    });
                 }
-            });
+
+                node.variant = currVariant;
+                node.published = node.variant.state.toLowerCase() === 'published';
+                node.status = !node.published ? 'This item is not published' : '';
+                node.name = node.variant.name;
+            }
+        }
+
+        // ## Get the url based on variant culture
+        function getUrl(node) {
+            if (currNode.urls.length > 0) {
+                var currUrl = null;
+                if (vm.selectedLanguage) {
+                    currUrl = _.find(currNode.urls, function (u) {
+                        if (!u.culture) return false;
+
+                        return u.culture.toLowerCase() === vm.selectedLanguage.culture.toLowerCase();
+                    });
+                }
+
+                node.url = currUrl;
+
+                if (node.published)
+                    node.status = node.url.text;
+            }
+        }
+
+        // ## Change selected language
+        function selectLanguage(language) {
+            vm.selectedLanguage = language;
+            vm.languageSelectorIsOpen = false;
+
+            // Check if we have a node selected
+            if (vm.node) {
+                getVariant(vm.node);
+                getUrl(vm.node);
+            }
         }
 
         // ## Close navigation
@@ -120,17 +176,12 @@
 
                     // ### Redirect
                     // Check if page is set in the config
-                    if (vm.node && vm.node.id) {
-                        contentResource.getNiceUrl(vm.node.id).then(function (data) {
-                            window.open(data, '_blank');
-                        });
+                    if (vm.node && vm.node.id && vm.node.url && vm.node.url.isUrl) {
+                        window.open(vm.node.url.text, '_blank');
                     } else {
                         // Open the root page
                         window.open('/', '_blank');
                     }
-
-                    // Close navigation
-                    navigationService.hideNavigation();
 
                 },
                 function (error) { }
