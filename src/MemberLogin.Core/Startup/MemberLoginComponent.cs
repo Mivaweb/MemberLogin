@@ -19,10 +19,12 @@ namespace MemberLogin.Core.Startup
             // If we are not on the members tree, just return
             if (sender.TreeAlias != "member") return;
 
+            string actionView = VirtualPathUtility.ToAbsolute("~/App_Plugins/MemberLogin/views/memberlogin.html");
+
             var menuItem = new Umbraco.Web.Models.Trees.MenuItem("memberLogin", "Impersonate Member");
             menuItem.Icon = "client";
             menuItem.AdditionalData.Add("memberId", e.NodeId);
-            menuItem.AdditionalData.Add("actionView", "/App_Plugins/MemberLogin/views/memberlogin.html");
+            menuItem.AdditionalData.Add("actionView", actionView);
             menuItem.SeparatorBefore = false;
 
             e.Menu.Items.Insert(e.Menu.Items.Count, menuItem);

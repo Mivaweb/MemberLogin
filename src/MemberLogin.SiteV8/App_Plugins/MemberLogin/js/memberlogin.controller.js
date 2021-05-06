@@ -10,7 +10,8 @@
             navigationService,
             contentResource,
             editorService,
-            languageResource
+            languageResource,
+            umbRequestHelper
         ) {
 
         var vm = this;
@@ -180,7 +181,7 @@
                         window.open(vm.node.url.text, '_blank');
                     } else {
                         // Open the root page
-                        window.open('/', '_blank');
+                        window.open(umbRequestHelper.convertVirtualToAbsolutePath('~/'), '_blank');
                     }
 
                 },
