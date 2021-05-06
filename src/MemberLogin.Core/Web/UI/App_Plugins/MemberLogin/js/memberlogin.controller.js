@@ -3,15 +3,16 @@
     'use strict';
 
     function memberLoginController(
-            $scope,
-            $http,
-            $location,
-            editorState,
-            navigationService,
-            contentResource,
-            editorService,
-            languageResource
-        ) {
+        $scope,
+        $http,
+        $location,
+        editorState,
+        navigationService,
+        contentResource,
+        editorService,
+        languageResource,
+        umbRequestHelper
+    ) {
 
         var vm = this;
 
@@ -172,20 +173,20 @@
             $http.post(
                 url,
                 _memberId).then(
-                function () {
+                    function () {
 
-                    // ### Redirect
-                    // Check if page is set in the config
-                    if (vm.node && vm.node.id && vm.node.url && vm.node.url.isUrl) {
-                        window.open(vm.node.url.text, '_blank');
-                    } else {
-                        // Open the root page
-                        window.open('/', '_blank');
-                    }
+                        // ### Redirect
+                        // Check if page is set in the config
+                        if (vm.node && vm.node.id && vm.node.url && vm.node.url.isUrl) {
+                            window.open(vm.node.url.text, '_blank');
+                        } else {
+                            // Open the root page
+                            window.open(umbRequestHelper.convertVirtualToAbsolutePath('~/'), '_blank');
+                        }
 
-                },
-                function (error) { }
-            );
+                    },
+                    function (error) { }
+                );
         }
 
     }
