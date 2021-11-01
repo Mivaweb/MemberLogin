@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
 
     'use strict';
 
@@ -9,6 +9,7 @@
             editorState,
             navigationService,
             contentResource,
+            contentTypeResource,
             editorService,
             languageResource
         ) {
@@ -51,20 +52,19 @@
                             return l.culture.toLowerCase() === mainCulture.toLowerCase();
                         });
                     }
+
                     vm.selectedLanguage = currCulture;
                 }
-
                 vm.loaded = true;
             });
+
         }
 
         // ## This loads the language data, if the are no variant content types configured this will return no languages
         function loadLanguages() {
-            return contentResource.allowsCultureVariation().then(function (b) {
-                if (b === true) {
-                    return languageResource.getAll();
-                }
-            });
+            return contentTypeResource.allowsCultureVariation().then(function (b) {
+                return languageResource.getAll();
+                });
         }
 
         // ## Toggle language selector
