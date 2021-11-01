@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
 
     'use strict';
 
@@ -112,8 +112,15 @@
                 var currVariant = null;
                 if (vm.selectedLanguage) {
                     currVariant = _.find(currNode.variants, function (v) {
-                        return v.language.id == vm.selectedLanguage.id;
+
+                        if (v.language !== null) {
+                            return v.language.id == vm.selectedLanguage.id;
+                        }
                     });
+                }
+
+                if (currVariant === null) {
+                    currVariant = currNode.variants[0]
                 }
 
                 node.variant = currVariant;
@@ -133,6 +140,10 @@
 
                         return u.culture.toLowerCase() === vm.selectedLanguage.culture.toLowerCase();
                     });
+                }
+
+                if (currUrl === null) {
+                    currUrl = currNode.urls[0];
                 }
 
                 node.url = currUrl;
