@@ -1,0 +1,56 @@
+﻿<div ng-controller="Mivaweb.MemberLoginController as vm"
+     class="memberlogin umb-dialog umb-pane" ng-init="vm.init()">
+
+    <div class="umb-dialog-body">
+
+        <p class="umb-abstract">You are about to impersonate as member <strong>{{vm.member}}</strong>.</p>
+
+        <div class="memberlogin-container" ng-show="vm.loaded">
+
+            <div class="control-group umb-control-group -no-border" ng-if="vm.languages.length > 1">
+                <div class="umb-el-wrap">
+                    <label>
+                        <strong>Culture</strong>
+                        <small>Choose the culture of the page you want to redirect after login.</small>
+                    </label>
+                    <div class="umb-language-picker">
+                        <div class="umb-language-picker__toggle" ng-click="vm.toggleLanguageSelector()">
+                            <div>{{vm.selectedLanguage.name}}</div>
+                            <ins class="umb-language-picker__expand" ng-class="{'icon-navigation-down': !vm.languageSelectorIsOpen, 'icon-navigation-up': vm.languageSelectorIsOpen}" class="icon-navigation-right">&nbsp;</ins>
+                        </div>
+                        <div class="umb-language-picker__dropdown" ng-if="vm.languageSelectorIsOpen">
+                            <a class="umb-language-picker__dropdown-item" ng-class="{'umb-language-picker__dropdown-item--current': language.active, 'bold': language.isDefault}" ng-click="vm.selectLanguage(language)" ng-repeat="language in vm.languages" href="">{{language.name}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group umb-control-group -no-border">
+                <div class="umb-el-wrap">
+                    <label>
+                        <strong>Redirect Page</strong>
+                        <small>Choose to which page you want to redirect after login.</small>
+                    </label>
+                    <div ng-show="!vm.node" class="memberlogin_node-add">
+                        <a href ng-click="vm.pickRedirectPage()" class="umb-node-preview-add" prevent-default>
+                            <localize key="general_add" class="ng-isolate-scope">Add</localize>
+                        </a>
+                        <p>*You will be redirect to the root page '/' of the website.</p>
+                    </div>
+                    <umb-node-preview ng-show="vm.node"
+                                      icon="vm.node.icon"
+                                      name="vm.node.name"
+                                      published="vm.node.published"
+                                      description="vm.node.status"
+                                      allow-remove="true"
+                                      on-remove="vm.node = null">
+                    </umb-node-preview>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="umb-dialog-footer umb-btn-toolbar">
+        <a href="#" prevent-default="" ng-click="vm.close()" class="btn btn-link"><localize key="general_cancel" class="ng-isolate-scope ng-scope">Cancel</localize></a>
+        <a href="#" prevent-default="" ng-click="vm.login()" ng-show="!vm.node || vm.node.published" class="btn btn-primary">Login as Member</a>
+    </div>
+</div>
