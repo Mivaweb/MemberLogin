@@ -1,0 +1,8 @@
+﻿{
+	"javascript": [
+		"~/App_Plugins/MemberLoginV9/js/memberlogin.controller.js"
+	],
+	"css": [
+		"~/App_Plugins/MemberLoginV9/css/memberlogin.css"
+	]
+}

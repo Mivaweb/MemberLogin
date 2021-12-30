@@ -1,0 +1,26 @@
+﻿.memberlogin-container {
+    margin: 30px 0;
+}
+
+.memberlogin_node-add p {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.5em;
+    color: #515054;
+    opacity: 0.6;
+}
+
+.memberlogin .umb-language-picker {
+    margin-top: 10px;
+    z-index: auto;
+}
+
+.memberlogin .umb-language-picker__toggle {
+    border: 1px solid #e9e9eb;
+    height: 50px;
+}
+
+.memberlogin .umb-language-picker__dropdown {
+    border-left: 1px solid #e9e9eb;
+    border-right: 1px solid #e9e9eb;
+}
