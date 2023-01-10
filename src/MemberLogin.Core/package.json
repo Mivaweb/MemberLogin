@@ -4,7 +4,7 @@
     "grunt-mkdir": "1.0.0",
     "grunt-contrib-clean": "1.1.0",
     "grunt-contrib-copy": "1.0.0",
-    "grunt-contrib-watch": "1.0.0"
+    "grunt-contrib-watch": "1.1.0"
   },
   "name": "memberlogin",
   "private": true,
